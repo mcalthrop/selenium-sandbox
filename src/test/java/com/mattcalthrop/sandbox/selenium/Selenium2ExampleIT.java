@@ -32,14 +32,14 @@ public class Selenium2ExampleIT {
     public void test1() throws Exception {
         assertEquals("The page title should equal Google at the start of the test.", "Google", driver.getTitle());
         WebElement searchField = driver.findElement(By.name("q"));
-        searchField.sendKeys("Drupal!");
+        searchField.sendKeys("Sausages!");
         searchField.submit();
         // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
         assertTrue("The page title should start with the search string after the search.",
                 (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver driver) {
-                        return driver.getTitle().toLowerCase().startsWith("drupal!");
+                        return driver.getTitle().toLowerCase().startsWith("sausages!");
                     }
                 })
         );
