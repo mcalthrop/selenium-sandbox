@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Selenium2ExampleIT {
     private WebDriver driver;
     private WebDriverWait wait;
+    private Boolean result;
 
     @Before
     public void setUp() {
@@ -32,7 +33,7 @@ public class Selenium2ExampleIT {
 
     @Test
     public void checkPageTitleOnInit() throws Exception {
-        assertEquals("The page title should equal Google at the start of the test.", "Google", driver.getTitle());
+        assertEquals("Google", driver.getTitle());
     }
 
     @Test
@@ -41,13 +42,12 @@ public class Selenium2ExampleIT {
         searchField.sendKeys("Sausages!");
         searchField.submit();
         // Google's search is rendered dynamically with JavaScript, so wait for the page to load.
-        assertTrue("The page title should start with the search string after the search.",
-                wait.until(new ExpectedCondition<Boolean>() {
-                    public Boolean apply(WebDriver driver) {
-                        return driver.getTitle().toLowerCase().startsWith("sausages!");
-                    }
-                })
-        );
+        result = wait.until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return driver.getTitle().toLowerCase().startsWith("sausages!");
+            }
+        });
+        assertTrue(result);
     }
 
 }
