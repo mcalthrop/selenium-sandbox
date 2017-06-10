@@ -15,11 +15,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Selenium2ExampleIT {
     private WebDriver driver;
+    private WebDriverWait wait;
 
     @Before
     public void setUp() {
         driver = new ChromeDriver();
         driver.get("http://www.google.co.uk/");
+        wait = new WebDriverWait(driver, 10);
     }
 
     @After
@@ -38,9 +40,7 @@ public class Selenium2ExampleIT {
         WebElement searchField = driver.findElement(By.name("q"));
         searchField.sendKeys("Sausages!");
         searchField.submit();
-        // Google's search is rendered dynamically with JavaScript.
-        // Wait for the page to load, timeout after 10 seconds
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        // Google's search is rendered dynamically with JavaScript, so wait for the page to load.
         assertTrue("The page title should start with the search string after the search.",
                 wait.until(new ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver driver) {
