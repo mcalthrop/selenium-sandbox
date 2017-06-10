@@ -30,3 +30,7 @@ hs_err_pid*
 
 # Maven
 target/
+
+# Binary Downloads #
+**/selenium_standalone_zips/
+**/selenium_standalone_binaries/

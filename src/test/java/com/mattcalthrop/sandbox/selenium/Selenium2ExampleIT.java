@@ -13,7 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Selenium2Example {
+public class Selenium2ExampleIT {
     private WebDriver driver;
 
     @Before
@@ -24,6 +24,7 @@ public class Selenium2Example {
 
     @After
     public void tearDown() {
+        driver.close();
         driver.quit();
     }
 
