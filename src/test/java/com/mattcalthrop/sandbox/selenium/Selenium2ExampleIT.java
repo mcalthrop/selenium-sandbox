@@ -36,8 +36,9 @@ public class Selenium2ExampleIT {
         searchField.submit();
         // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         assertTrue("The page title should start with the search string after the search.",
-                (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+                wait.until(new ExpectedCondition<Boolean>() {
                     public Boolean apply(WebDriver driver) {
                         return driver.getTitle().toLowerCase().startsWith("sausages!");
                     }
