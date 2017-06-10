@@ -29,8 +29,12 @@ public class Selenium2ExampleIT {
     }
 
     @Test
-    public void test1() throws Exception {
+    public void checkPageTitleOnInit() throws Exception {
         assertEquals("The page title should equal Google at the start of the test.", "Google", driver.getTitle());
+    }
+
+    @Test
+    public void checkPageTitleAfterSearch() throws Exception {
         WebElement searchField = driver.findElement(By.name("q"));
         searchField.sendKeys("Sausages!");
         searchField.submit();
