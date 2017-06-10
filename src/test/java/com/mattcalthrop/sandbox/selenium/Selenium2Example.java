@@ -1,7 +1,7 @@
 package com.mattcalthrop.sandbox.selenium;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
@@ -14,23 +14,21 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Selenium2Example {
-    private String baseUrl;
     private WebDriver driver;
 
     @Before
-    public void openBrowser() {
-        baseUrl = System.getProperty("webdriver.base.url");
+    public void setUp() {
         driver = new ChromeDriver();
-        driver.get(baseUrl);
+        driver.get("http://www.google.co.uk/");
     }
 
     @After
-    public void saveScreenshotAndCloseBrowser() {
+    public void tearDown() {
         driver.quit();
     }
 
     @Test
-    public void pageTitleAfterSearchShouldBeginWithDrupal() {
+    public void test1() {
         assertEquals("The page title should equal Google at the start of the test.", "Google", driver.getTitle());
         WebElement searchField = driver.findElement(By.name("q"));
         searchField.sendKeys("Drupal!");
