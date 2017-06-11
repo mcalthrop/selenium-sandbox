@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Selenium2ExampleIT {
+public class Selenium3ExampleIT {
     private static WebDriver driver;
     private static WebDriverWait wait;
     private static String startUrl;
